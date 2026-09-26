@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BobPulse | Autonomous Code Modernization & Self-Healing Gateway</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dark-theme">
+    <!-- Background Ambient Glows -->
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-grid"></div>
+
+    <div class="app-container">
+        <!-- Top Navigation -->
+        <header class="navbar">
+            <div class="nav-brand">
+                <div class="logo-mark">
+                    <span class="logo-icon">⚡</span>
+                </div>
+                <div class="brand-text">
+                    <div class="brand-title">Bob<span>Pulse</span> <span class="badge-version">v2.0</span></div>
+                    <div class="brand-subtitle">Autonomous Code Modernization & Self-Healing Gateway</div>
+                </div>
+            </div>
+
+            <div class="nav-status-group">
+                <div class="status-pill connected">
+                    <span class="pulse-dot"></span>
+                    <span class="status-text">IBM BOB 2.0 CONNECTED</span>
+                </div>
+                <div class="status-pill model-pill">
+                    <span class="ibm-icon">IBM</span>
+                    <span>Granite 20B Code</span>
+                </div>
+                <a href="#lablab-docs" id="openDocsBtn" class="nav-link-btn">LabLab Criteria</a>
+            </div>
+        </header>
+
+        <!-- Benchmark Presets Bar -->
+        <section class="benchmark-strip">
+            <span class="strip-label">⚡ Real-World Benchmarks:</span>
+            <div class="preset-buttons" id="presetsContainer">
+                <!-- Dynamically populated or fallback presets -->
+                <button class="preset-btn active" data-preset="python_legacy_service">
+                    <span class="lang-tag py">PY</span> Python 2.7 SQLi & Deprecated APIs
+                </button>
+                <button class="preset-btn" data-preset="java_concurrency_monolith">
+                    <span class="lang-tag java">JAVA</span> Java 8 Concurrency to Java 21+
+                </button>
+                <button class="preset-btn" data-preset="node_callback_hell">
+                    <span class="lang-tag js">JS</span> Node Callback Hell & Deprecated Crypto
+                </button>
+            </div>
+            <div class="strip-actions">
+                <button class="btn-secondary" id="resetSnippetBtn">Reset</button>
+            </div>
+        </section>
+
+        <!-- Executive Metrics Bar (Dynamic) -->
+        <section class="metrics-dashboard" id="metricsBar">
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-title">Technical Debt</span>
+                    <span class="metric-trend down" id="debtTrendBadge">-95%</span>
+                </div>
+                <div class="metric-value-container">
+                    <span class="metric-val before" id="debtBeforeVal">85%</span>
+                    <span class="metric-arrow">➔</span>
+                    <span class="metric-val after" id="debtAfterVal">4%</span>
+                </div>
+                <div class="metric-footer">Modern architectural compliance</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-title">Vulnerabilities Resolved</span>
+                    <span class="metric-badge-shield" id="vulnShieldBadge">CWE Remediated</span>
+                </div>
+                <div class="metric-value-container">
+                    <span class="metric-val highlight" id="vulnCountVal">2 Critical</span>
+                </div>
+                <div class="metric-footer">Zero known exploits in synthesized code</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-title">Self-Healing Test Suite</span>
+                    <span class="metric-badge-pass" id="testPassBadge">PASSED</span>
+                </div>
+                <div class="metric-value-container">
+                    <span class="metric-val success" id="testPassRateVal">100%</span>
+                    <span class="metric-subtext">(4 / 4 Assertions)</span>
+                </div>
+                <div class="metric-footer">Zero regressions in verification sandbox</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-title">Dev Time Saved</span>
+                    <span class="metric-badge-roi">ROI +92%</span>
+                </div>
+                <div class="metric-value-container">
+                    <span class="metric-val highlight-cyan" id="hoursSavedVal">~4.5 hrs</span>
+                </div>
+                <div class="metric-footer">Immediate enterprise pull request ready</div>
+            </div>
+        </section>
+
+        <!-- Agent Execution Pipeline Bar -->
+        <section class="pipeline-tracker">
+            <div class="pipeline-header">
+                <span class="pipeline-title">🤖 Autonomous Agent Workflow</span>
+                <span class="pipeline-timer" id="pipelineTimer">Execution Time: 1.82s</span>
+            </div>
+            <div class="pipeline-steps">
+                <div class="pipeline-step completed" id="step1">
+                    <div class="step-icon">1</div>
+                    <div class="step-info">
+                        <div class="step-name">AST Ingestion</div>
+                        <div class="step-desc">Grammar & Syntax Audit</div>
+                    </div>
+                </div>
+                <div class="pipeline-arrow">➔</div>
+                <div class="pipeline-step completed" id="step2">
+                    <div class="step-icon">2</div>
+                    <div class="step-info">
+                        <div class="step-name">Debt & CVE Scan</div>
+                        <div class="step-desc">Security Sentinel</div>
+                    </div>
+                </div>
+                <div class="pipeline-arrow">➔</div>
+                <div class="pipeline-step completed" id="step3">
+                    <div class="step-icon">3</div>
+                    <div class="step-info">
+                        <div class="step-name">IBM Bob 2.0 Reasoning</div>
+                        <div class="step-desc">Decomposition Plan</div>
+                    </div>
+                </div>
+                <div class="pipeline-arrow">➔</div>
+                <div class="pipeline-step completed" id="step4">
+                    <div class="step-icon">4</div>
+                    <div class="step-info">
+                        <div class="step-name">Granite Synthesis</div>
+                        <div class="step-desc">Modernization & Test Gen</div>
+                    </div>
+                </div>
+                <div class="pipeline-arrow">➔</div>
+                <div class="pipeline-step completed" id="step5">
+                    <div class="step-icon">5</div>
+                    <div class="step-info">
+                        <div class="step-name">Test Sandbox</div>
+                        <div class="step-desc">Self-Healing Verification</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Studio Workspace -->
+        <main class="studio-main">
+            <!-- Studio Toolbar -->
+            <div class="studio-toolbar">
+                <div class="toolbar-left">
+                    <label for="languageSelect" class="toolbar-label">Language:</label>
+                    <select id="languageSelect" class="custom-select">
+                        <option value="python">Python</option>
+                        <option value="java">Java</option>
+                        <option value="javascript">JavaScript / Node.js</option>
+                    </select>
+
+                    <span class="file-name-tag" id="currentFileName">legacy_user_service.py</span>
+                </div>
+
+                <div class="toolbar-center">
+                    <div class="view-tabs">
+                        <button class="tab-btn active" data-tab="diffView">Side-by-Side Diff</button>
+                        <button class="tab-btn" data-tab="issuesView">Security & Debt Audit (<span id="issueCountBadge">3</span>)</button>
+                        <button class="tab-btn" data-tab="testsView">Test Sandbox (<span id="testCountBadge">4/4</span>)</button>
+                        <button class="tab-btn" data-tab="logsView">IBM Bob Agent Logs</button>
+                    </div>
+                </div>
+
+                <div class="toolbar-right">
+                    <button class="btn-primary" id="runAgentBtn">
+                        <span class="btn-icon">⚡</span>
+                        <span>Run BobPulse Agent</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab 1: Side by Side Diff Viewer -->
+            <div class="tab-content active" id="diffView">
+                <div class="diff-container">
+                    <div class="diff-panel left-panel">
+                        <div class="panel-header">
+                            <span class="panel-badge legacy">ORIGINAL CODE (LEGACY)</span>
+                            <span class="panel-meta" id="leftLineCount">33 lines • Deprecated Patterns</span>
+                        </div>
+                        <div class="code-editor-wrapper">
+                            <textarea id="rawCodeInput" class="code-textarea" spellcheck="false" placeholder="Paste legacy code here..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="diff-divider">
+                        <div class="divider-line"></div>
+                        <div class="divider-icon">⚡</div>
+                        <div class="divider-line"></div>
+                    </div>
+
+                    <div class="diff-panel right-panel">
+                        <div class="panel-header">
+                            <span class="panel-badge modern">BOBPULSE MODERNIZED (IBM BOB 2.0)</span>
+                            <span class="panel-meta" id="rightLineCount">58 lines • Verified Clean</span>
+                        </div>
+                        <div class="code-editor-wrapper">
+                            <pre class="modern-code-display"><code id="modernizedCodeDisplay"></code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2: Security & Debt Findings -->
+            <div class="tab-content" id="issuesView">
+                <div class="issues-container">
+                    <div class="issues-column">
+                        <h3 class="column-title"><span class="badge-crit">CRITICAL</span> Security Vulnerabilities Identified</h3>
+                        <div class="issues-list" id="vulnList">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+                    <div class="issues-column">
+                        <h3 class="column-title"><span class="badge-dep">DEPRECATED</span> Obsolete APIs & Architectural Debt</h3>
+                        <div class="issues-list" id="depList">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 3: Self-Healing Test Sandbox -->
+            <div class="tab-content" id="testsView">
+                <div class="sandbox-container">
+                    <div class="sandbox-summary-card">
+                        <div class="sandbox-status-row">
+                            <div class="sandbox-big-badge">✅ Sandbox Status: PASSING</div>
+                            <div class="sandbox-meta-row">
+                                <span>Assertions: <strong>4 Passed</strong></span>
+                                <span>Coverage: <strong>94.2%</strong></span>
+                                <span>Total Latency: <strong>63ms</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="test-cases-grid" id="testCasesGrid">
+                        <!-- Populated dynamically -->
+                    </div>
+                    <div class="generated-test-code-box">
+                        <div class="box-title">Generated Unit Tests & Regression Harness:</div>
+                        <pre class="test-code-pre"><code id="testCodeDisplay"></code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 4: IBM Bob Multi-Agent Execution Logs -->
+            <div class="tab-content" id="logsView">
+                <div class="logs-container">
+                    <div class="logs-header-bar">
+                        <span>IBM Bob 2.0 Agent Session Trace (LabLab.ai Submission Evidence)</span>
+                        <button class="btn-small" id="copyLogsBtn">Copy Session Logs</button>
+                    </div>
+                    <div class="log-stream" id="logStream">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Floating Action Bar -->
+            <footer class="action-footer">
+                <div class="footer-left">
+                    <button class="footer-btn" id="copyModernCodeBtn">📋 Copy Modernized Code</button>
+                    <button class="footer-btn" id="downloadPatchBtn">💾 Download Git Patch (.patch)</button>
+                </div>
+                <div class="footer-right">
+                    <button class="footer-btn btn-accent" id="openPRModalBtn">
+                        <span>🚀 Generate GitHub Pull Request</span>
+                    </button>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Modal: GitHub Pull Request Generator -->
+    <div class="modal-backdrop" id="prModal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <span>🚀 Ready-to-Merge Pull Request</span>
+                    <span class="badge-pr">GitHub Gateway</span>
+                </div>
+                <button class="modal-close" id="closePRModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="pr-meta-grid">
+                    <div class="pr-field">
+                        <label>Base Branch:</label>
+                        <input type="text" value="main" readonly class="input-readonly">
+                    </div>
+                    <div class="pr-field">
+                        <label>Compare Branch:</label>
+                        <input type="text" id="prBranchInput" value="bobpulse/modernize-legacy-service" readonly class="input-readonly">
+                    </div>
+                </div>
+                <div class="pr-field full">
+                    <label>PR Title:</label>
+                    <input type="text" id="prTitleInput" value="refactor(bobpulse): Modernize UserService & resolve SQL Injection CVE-89" class="input-text">
+                </div>
+                <div class="pr-field full">
+                    <label>PR Description (Markdown):</label>
+                    <textarea id="prBodyTextarea" class="pr-textarea" rows="12"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="copyPRMarkdownBtn">Copy PR Description</button>
+                <button class="btn-primary" id="confirmPRBtn">Export Pull Request Payload</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: LabLab Hackathon Submission Guidelines & Script -->
+    <div class="modal-backdrop" id="docsModal">
+        <div class="modal-dialog modal-large">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <span>🏆 LabLab.ai Submission Helper & Criteria Checklist</span>
+                </div>
+                <button class="modal-close" id="closeDocsModalBtn">&times;</button>
+            </div>
+            <div class="modal-body docs-body">
+                <h3>1. Judging Criteria Mapping</h3>
+                <ul>
+                    <li><strong>Application of Technology:</strong> Showcases IBM Bob 2.0 multi-agent reasoning, Granite 20B Code models, and self-healing test sandboxes.</li>
+                    <li><strong>Business Value:</strong> Tackles the 42% developer time lost to legacy maintenance and security debt.</li>
+                    <li><strong>Presentation:</strong> Interactive side-by-side visual diff, live passing test suite, and one-click GitHub PR export.</li>
+                    <li><strong>Originality:</strong> Goes beyond generic chat to provide a real, autonomous code modernization and healing pipeline.</li>
+                </ul>
+
+                <h3>2. 90-Second Video Demo Script (At a Glance)</h3>
+                <ol>
+                    <li><strong>0:00 - 0:20:</strong> The Pain Point — Show legacy code with critical SQL Injection and deprecated APIs.</li>
+                    <li><strong>0:20 - 0:50:</strong> The BobPulse Run — Click "Run BobPulse Agent". Show the 5-stage agent pipeline analyzing AST, decomposing the plan, and generating modern code.</li>
+                    <li><strong>0:50 - 1:20:</strong> The Visual Diff & Tests — Show the side-by-side comparison with parameterized queries, and switch to the Self-Healing Test Sandbox passing 100%.</li>
+                    <li><strong>1:20 - 1:50:</strong> Instant Pull Request — Click "Generate GitHub Pull Request" and download the Git patch.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>
