@@ -23,8 +23,10 @@ import uvicorn
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 if __name__ == "__main__":
-    apikey = os.getenv("IBM_WATSONX_APIKEY") or os.getenv("WATSONX_APIKEY")
-    granite_mode = "ONLINE (Live Granite 20B API)" if apikey else "STANDBY (Rule engine fallback - set IBM_WATSONX_APIKEY in .env)"
+    apikey = os.getenv("IBM_WATSONX_APIKEY") or os.getenv("WATSONX_APIKEY") or ""
+    clean = apikey.strip().lower()
+    is_real = bool(clean and not clean.startswith("your_") and "placeholder" not in clean)
+    granite_mode = "ONLINE (Live Granite 20B API)" if is_real else "STANDBY (Rule engine fallback - set IBM_WATSONX_APIKEY in .env)"
     print("=" * 60)
     print("  [*] Starting BobPulse Studio (Powered by IBM Bob 2.0)")
     print("  [*] Access Dashboard: http://localhost:8000")

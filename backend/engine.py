@@ -1225,17 +1225,26 @@ def test_type_annotation_coverage():
 #  BobPulse Engine — Orchestrator + Result Cache  (Fix #10)
 # ─────────────────────────────────────────────────────────────────────────────
 
+def _is_real_key(val: str) -> bool:
+    if not val:
+        return False
+    clean = val.strip().lower()
+    return not (clean.startswith("your_") or "placeholder" in clean or clean in ("", "none", "null"))
+
+
 class BobPulseEngine:
     def __init__(self):
         pass
 
     @property
     def watsonx_api_key(self) -> str:
-        return os.getenv("IBM_WATSONX_APIKEY") or os.getenv("WATSONX_APIKEY") or ""
+        key = os.getenv("IBM_WATSONX_APIKEY") or os.getenv("WATSONX_APIKEY") or ""
+        return key if _is_real_key(key) else ""
 
     @property
     def watsonx_project_id(self) -> str:
-        return os.getenv("IBM_WATSONX_PROJECT_ID") or os.getenv("WATSONX_PROJECT_ID") or ""
+        pid = os.getenv("IBM_WATSONX_PROJECT_ID") or os.getenv("WATSONX_PROJECT_ID") or ""
+        return pid if _is_real_key(pid) else ""
 
     def analyze_and_modernize(
         self,

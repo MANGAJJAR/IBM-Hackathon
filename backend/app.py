@@ -71,8 +71,8 @@ class CustomScanRequest(BaseModel):
 @app.get("/api/health")
 def health_check():
     from backend.engine import WATSONX_AVAILABLE, _RESULT_CACHE
-    api_key = os.getenv("IBM_WATSONX_APIKEY") or os.getenv("WATSONX_APIKEY")
-    project_id = os.getenv("IBM_WATSONX_PROJECT_ID") or os.getenv("WATSONX_PROJECT_ID")
+    api_key = engine.watsonx_api_key
+    project_id = engine.watsonx_project_id
     return {
         "status": "healthy",
         "system": "BobPulse Gateway",
