@@ -456,7 +456,7 @@ function initEventListeners() {
 async function triggerBobPulseAnalysis(code, language, presetId) {
     const runBtn = document.getElementById("runAgentBtn");
     runBtn.classList.add("loading");
-    runBtn.innerHTML = `<span>⚡</span> Running BobPulse Pipeline...`;
+    runBtn.innerHTML = `<span>Running BobPulse agent...</span>`;
 
     // Reset pipeline step animations
     animatePipelineExecution();
@@ -485,7 +485,12 @@ async function triggerBobPulseAnalysis(code, language, presetId) {
         fallbackLocalRender(presetId);
     } finally {
         runBtn.classList.remove("loading");
-        runBtn.innerHTML = `<span>⚡</span> Run BobPulse Agent`;
+        runBtn.innerHTML = `
+            <svg class="carbon-btn-icon" viewBox="0 0 32 32" fill="currentColor">
+                <path d="M7 28a1 1 0 0 1-1-1V5a1 1 0 0 1 1.482-.876l20 11a1 1 0 0 1 0 1.752l-20 11A1 1 0 0 1 7 28z"/>
+            </svg>
+            <span>Run BobPulse agent</span>
+        `;
     }
 }
 
@@ -739,15 +744,16 @@ function showToast(message) {
     const toast = document.createElement("div");
     toast.textContent = message;
     toast.style.position = "fixed";
-    toast.style.bottom = "80px";
-    toast.style.right = "30px";
-    toast.style.background = "#10b981";
-    toast.style.color = "#fff";
-    toast.style.padding = "10px 18px";
-    toast.style.borderRadius = "8px";
+    toast.style.bottom = "32px";
+    toast.style.right = "32px";
+    toast.style.background = "#24a148";
+    toast.style.color = "#ffffff";
+    toast.style.padding = "10px 16px";
+    toast.style.borderRadius = "2px";
+    toast.style.border = "1px solid #525252";
     toast.style.fontSize = "13px";
+    toast.style.fontFamily = "'IBM Plex Sans', sans-serif";
     toast.style.fontWeight = "600";
-    toast.style.boxShadow = "0 8px 20px rgba(0,0,0,0.5)";
     toast.style.zIndex = "9999";
     document.body.appendChild(toast);
     setTimeout(() => {
