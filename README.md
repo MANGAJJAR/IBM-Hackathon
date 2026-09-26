@@ -74,7 +74,25 @@ cd IBM-Hackathon
 pip install -r requirements.txt
 ```
 
-### 3. Running the BobPulse Studio
+### 3. Configure IBM watsonx Granite (Optional — enables live AI synthesis)
+
+Copy the example env file and add your credentials:
+
+```bash
+cp .env.example .env
+```
+
+Then open `.env` and fill in your values:
+
+```
+IBM_WATSONX_APIKEY=your_api_key_here
+IBM_WATSONX_PROJECT_ID=your_project_id_here
+```
+
+> **Get credentials free:** [IBM Cloud API Keys](https://cloud.ibm.com/iam/apikeys) · [watsonx Project ID](https://dataplatform.cloud.ibm.com/projects)
+> Without credentials, BobPulse runs in **autonomous rule-engine mode** — fully functional for all 3 benchmarks.
+
+### 4. Running the BobPulse Studio
 
 Start the local server:
 
@@ -87,6 +105,10 @@ Open your browser at:
 
 Interactive API documentation is available at:
 👉 **`http://localhost:8000/docs`**
+
+> The startup console will show:
+> - `watsonx Granite: ONLINE (Live Granite 20B API)` — if API key is set ✅
+> - `watsonx Granite: STANDBY (Rule engine fallback)` — without API key ✅
 
 ---
 
@@ -121,6 +143,7 @@ Interactive API documentation is available at:
 │   └── uploadHandler.js
 ├── run.py                  # Entrypoint server runner
 ├── requirements.txt        # Python dependencies
+├── .env.example            # Environment variable template (copy to .env and fill in)
 ├── LABLAB_SUBMISSION.md    # Ready-to-copy LabLab.ai submission text & video script
 └── README.md               # Project documentation
 ```
