@@ -67,8 +67,8 @@ flowchart TB
 Clone this repository and install dependencies:
 
 ```bash
-git clone https://github.com/<your-username>/bobpulse.git
-cd bobpulse
+git clone https://github.com/MANGAJJAR/IBM-Hackathon.git
+cd IBM-Hackathon
 
 # Install dependencies
 pip install -r requirements.txt

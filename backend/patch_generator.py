@@ -13,7 +13,7 @@ def generate_pull_request_payload(original_filename: str, diff_unified: str, met
     
     vuln_md = ""
     for v in issues.get("vulnerabilities", []):
-        vuln_md += f"- **[{v.get('cve', 'VULN')}]** {v.get('title')}: {v.get('description')} *(Remediated)*\n"
+        vuln_md += f"- **[{v.get('cwe', v.get('id', 'VULN'))}]** {v.get('title')}: {v.get('description')} *(Remediated)*\n"
         
     dep_md = ""
     for d in issues.get("deprecations", []):

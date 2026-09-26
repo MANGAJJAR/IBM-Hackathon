@@ -1,12 +1,40 @@
+# Byte-compiled / optimized files
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
 .Python
+
+# Environments
 env/
 venv/
 .venv/
+ENV/
+
+# Local credentials
 .env
+*.local
+
+# Testing and coverage
 .pytest_cache/
+.coverage
+htmlcov/
 *.log
+
+# Operating System files
 .DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE & Editor caches
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# External binaries / JDK downloads
+oracleJdk*/
+jdk*/
+*.dll
+*.exe
+*.so
+*.dylib
